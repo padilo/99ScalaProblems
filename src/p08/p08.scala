@@ -1,0 +1,48 @@
+package p08
+
+object p08 {
+  def main(args: Array[String]): Unit = {
+    val input = List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)
+
+    println(compress(input))
+    println(compress2(input))
+    println(compress3(input))
+  }
+
+  // This method generates the solution reversed, so a reverse is needed to generate the correct answer
+
+  def compress[T](l: List[T]): List[T] = {
+    def compressTR(l: List[T], result: List[T]): List[T] = {
+      l match {
+        case List() => result
+        case head :: tail => compressTR(tail.dropWhile((_ == head)), head :: result)
+      }
+    }
+
+    compressTR(l, List()).reverse
+  }
+
+  def compress2[T](l: List[T]): List[T] = {
+    def compressTR(l: List[T], result: List[T]): List[T] = {
+      l match {
+        case head :: List() => head :: result
+        case head :: tail if (head != tail.head) => compressTR(tail, head :: result)
+        case head :: tail => compressTR(tail, result)
+        case _ => result
+      }
+    }
+
+    compressTR(l, List()).reverse
+  }
+
+  // using foldRight
+  def compress3[T](l: List[T]): List[T] = {
+    def compare(head: T, tail: List[T]): List[T] = {
+      if (!tail.isEmpty && head == tail.head) tail
+      else head :: tail
+    }
+    l.foldRight(List[T]())(compare)
+  }
+
+}
+  
