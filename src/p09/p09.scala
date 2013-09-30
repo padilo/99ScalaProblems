@@ -45,7 +45,7 @@ object p09 {
         result
       } else {
         val extractedList = l.span((_==l.head))
-        packR(extractedList._1, extractedList._2 :: result)
+        packR(extractedList._2, extractedList._1 :: result)
         
       }
     }
