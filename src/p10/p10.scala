@@ -20,7 +20,7 @@ object p10 {
     def pack = p09.pack2(l)
 
     pack map {
-      case elem => List(elem.length, elem.head)
+      case elem => (elem.length, elem.head)
     }
   }
 }
