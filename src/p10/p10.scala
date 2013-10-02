@@ -16,7 +16,7 @@ object p10 {
   }
 
   // in reverse order because of my p09 implementation 
-  def encode[T](l: List[T]): List[Any] = {
+  def encode[T](l: List[T]): List[Pair[Int, T]] = {
     def pack = p09.pack2(l)
 
     pack map {
