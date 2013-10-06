@@ -21,7 +21,7 @@ object p12 {
   def decode[T](l: List[Pair[Int, T]]): List[T] = {
     def decodeTR(l: List[Pair[Int, T]], result: List[T]): List[T] = {
       l match {
-        case (n, s) :: tail => decodeTR(tail, result:::List.make(n, s)); 
+        case (n, s) :: tail => decodeTR(tail, result:::List.fill(n)(s)); 
         case Nil => result
       }
     }
@@ -43,7 +43,7 @@ object p12 {
   // Flatmap solution, much better (provided by Phil Gold)
   def decode3[T](l: List[Pair[Int, T]]): List[T] = {
     l flatMap {
-      e=>List.make(e._1, e._2)
+      e=>List.fill (e._1) (e._2)
   	}
   }
 }

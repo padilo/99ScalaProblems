@@ -16,7 +16,7 @@ object p18 {
     val sample4 = List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)
     val sample5 = List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)
     
-    println("SLICE")
+    println("SLICE") 
     println(slice(3, 7, sample1))
     println(slice(2, 131231, sample2))
     println(slice(23413, 1, sample3))

@@ -17,7 +17,7 @@ object p07 {
   def flatten(l: List[Any]): List[Any] = {
     def flattenTR(elem:Any, result:List[Any]): List[Any] = {
 	    elem match {
-	      case List() => result
+	      case Nil => result
 	      case x::tail => flattenTR(x, flattenTR(tail, result))
 	      case x => x::result
 	    }

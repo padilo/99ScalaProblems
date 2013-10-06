@@ -18,7 +18,7 @@ object p15 {
     if (l.isEmpty) {
       List()
     } else {
-      List.make(n, l.head) ::: duplicateN(n, l.tail)
+      List.fill(n)(l.head) ::: duplicateN(n, l.tail)
     }
   }
 
@@ -28,7 +28,7 @@ object p15 {
       if (l.isEmpty) {
         result
       } else {
-        duplicateNTR(n, l.tail, result:::List.make(n, l.head))
+        duplicateNTR(n, l.tail, result:::List.fill(n)(l.head))
       }
     }
     duplicateNTR(n, l, List())
@@ -37,7 +37,7 @@ object p15 {
   // flatmap
   def duplicateN3[T](n: Int, l: List[T]): List[T] = {
     l.flatMap{
-      List.make(n, _)
+      List.fill(n)(_)
     }
   }
   

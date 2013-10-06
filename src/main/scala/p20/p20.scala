@@ -41,7 +41,7 @@ object p20 {
         (h :: result._1, result._2)
       }
     }
-  }
+  } 
 
   // split solution
   def removeAt2(k: Int, l: List[Symbol]): (List[Symbol], Symbol) = {
@@ -51,7 +51,6 @@ object p20 {
       case (s1, List()) => throw new NoSuchElementException
       case (s1, h2 :: t2) => (s1 ::: t2, h2)
     }
-
   }
 
 }
