@@ -4,3 +4,7 @@
 /.classpath
 /.cache
 /.worksheet
+/target
+/project
+/.ensime_lucene
+/.ensime
