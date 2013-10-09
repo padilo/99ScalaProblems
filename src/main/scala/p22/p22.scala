@@ -20,6 +20,8 @@ object p22 {
     test("range", range)
     test("range2", range2)
     test("range3", range3)
+    test("rangeFunctional", rangeFunctional)
+    test("rangeBuiltin", rangeBuiltin)
   }
 
   def range(i: Int, j: Int): List[Int] = {
@@ -35,10 +37,29 @@ object p22 {
   def range3(i: Int, j: Int): List[Int] = {
     @tailrec
     def range3TR(i: Int, j: Int, result: List[Int]): List[Int] = {
-      if (i > j) result.reverse
-      else range3TR(i + 1, j, i :: result)
+      if (i > j) result
+      else range3TR(i, j - 1, j :: result)
     }
-    
+
     range3TR(i, j, List())
   }
+
+  // Phil solutions
+  def rangeBuiltin(start: Int, end: Int): List[Int] = {
+    List.range(start, end + 1)
+  }
+
+  // The classic functional approach would be to use `unfoldr`, which Scala
+  // doesn't have.  So we'll write one and then use it.
+  def unfoldRight[A, B](s: B)(f: B => Option[(A, B)]): List[A] =
+    f(s) match {
+      case None => Nil
+      case Some((r, n)) => r :: unfoldRight(n)(f)
+    }
+  def rangeFunctional(start: Int, end: Int): List[Int] =
+    unfoldRight(start) { n =>
+      if (n > end) None
+      else Some((n, n + 1))
+    }
+
 }
