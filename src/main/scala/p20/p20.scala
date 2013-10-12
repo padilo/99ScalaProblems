@@ -31,7 +31,7 @@ object p20 {
   }
 
   // recursive
-  def removeAt(k: Int, l: List[Symbol]): (List[Symbol], Symbol) = {
+  def removeAt[T](k: Int, l: List[T]): (List[T], T) = {
     (k, l) match {
       case (_, List()) => throw new NoSuchElementException
       case (0, h :: t) => (t, h)
@@ -44,7 +44,7 @@ object p20 {
   } 
 
   // split solution
-  def removeAt2(k: Int, l: List[Symbol]): (List[Symbol], Symbol) = {
+  def removeAt2[T](k: Int, l: List[T]): (List[T], T) = {
     if (k < 0) throw new NoSuchElementException
 
     l.splitAt(k) match {
