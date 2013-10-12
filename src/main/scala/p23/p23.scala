@@ -15,24 +15,24 @@ object p23 {
     println(randomSelect2(3, List('a, 'b, 'c, 'd, 'f, 'g, 'h)))
   }
 
-  def randomSelect(n: Int, l: List[Symbol]): List[Symbol] = {
+  def randomSelect[T](n: Int, l: List[T]): List[T] = {
     if (n <= 0 || l.isEmpty) {
       List()
     } else {
       val randN = Random.nextInt(l.length)
-      val (resultList, elem) = p20.p20.removeAt(randN, l)
+      val (resultList:List[T], elem:T) = p20.p20.removeAt(randN, l)
       elem :: randomSelect(n - 1, resultList)
     }
   }
 
-  def randomSelect2(n: Int, l: List[Symbol]): List[Symbol] = {
+  def randomSelect2[T](n: Int, l: List[T]): List[T] = {
     @tailrec
-    def randomSelectTR(n: Int, l: List[Symbol], result: List[Symbol]): List[Symbol] = {
+    def randomSelectTR(n: Int, l: List[T], result: List[T]): List[T] = {
       if (n <= 0 || l.isEmpty) {
         result
       } else {
         val randN = Random.nextInt(l.length)
-        val (resultList, elem) = p20.p20.removeAt(randN, l)
+        val (resultList:List[T], elem:T) = p20.p20.removeAt(randN, l)
         randomSelectTR(n - 1, resultList, elem::result)
       }
     }
