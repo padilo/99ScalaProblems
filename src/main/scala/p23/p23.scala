@@ -20,7 +20,7 @@ object p23 {
       List()
     } else {
       val randN = Random.nextInt(l.length)
-      val (resultList:List[T], elem:T) = p20.p20.removeAt(randN, l)
+      val (resultList:List[T], elem) = p20.p20.removeAt(randN, l)
       elem :: randomSelect(n - 1, resultList)
     }
   }
@@ -32,7 +32,7 @@ object p23 {
         result
       } else {
         val randN = Random.nextInt(l.length)
-        val (resultList:List[T], elem:T) = p20.p20.removeAt(randN, l)
+        val (resultList:List[T], elem) = p20.p20.removeAt(randN, l)
         randomSelectTR(n - 1, resultList, elem::result)
       }
     }
